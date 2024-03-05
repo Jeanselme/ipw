@@ -63,7 +63,7 @@ ipwpoint <- function(
 			}
 		#weights multinomial
 			if (tempcall$family == "multinomial") {
-				if (is.null(tempcall$numerator)) tempdat$p.numerator <- 1
+				if (is.null(tempcall$numerator)) tempdat$w.numerator <- 1
 				else {
 					mod1 <- multinom(
 						formula = eval(parse(text = paste(deparse(tempcall$exposure, width.cutoff = 500), deparse(tempcall$numerator, width.cutoff = 500), sep = ""))),
@@ -94,7 +94,7 @@ ipwpoint <- function(
 				if(tempcall$link == "probit") m  <- "probit"
 				if(tempcall$link == "cloglog") m  <- "cloglog"
 				if(tempcall$link == "cauchit") m  <- "cauchit"
-				if (is.null(tempcall$numerator)) tempdat$p.numerator <- 1
+				if (is.null(tempcall$numerator)) tempdat$w.numerator <- 1
 				else {
 					mod1 <- polr(
 						formula = eval(parse(text = paste("as.factor(", deparse(tempcall$exposure, width.cutoff = 500), ")", deparse(tempcall$numerator, width.cutoff = 500), sep = ""))),
